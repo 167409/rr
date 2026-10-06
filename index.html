@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Naomi Kallarakal</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Caveat:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1b1a38;--bg2:#3a2250;--paper:#fbf3ea;--rose:#e58fa8;--deep:#b8465f;--gold:#f2cf8b;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{min-height:100%;height:100%}
+body{margin:0;background:radial-gradient(ellipse at 50% 25%,var(--bg2),var(--bg) 72%) fixed;color:var(--paper);font-family:'Cormorant Garamond',Georgia,serif;overflow:hidden;display:flex;align-items:center;justify-content:center;touch-action:manipulation}
+body.done{overflow-y:auto;align-items:flex-start}
+.stage{width:100%;max-width:480px;padding:24px 20px 60px;text-align:center;position:relative;z-index:2}
+.star{position:fixed;width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:.5;animation:tw 3s ease-in-out infinite;z-index:0}
+@keyframes tw{50%{opacity:.05}}
+.pet{font-size:5.5rem;line-height:1;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px) rotate(4deg)}}
+.name{font-family:'Caveat',cursive;font-size:2.2rem;color:var(--gold);margin:14px 0 4px}
+h1{font-size:2.3rem;line-height:1.15;margin:0 0 10px;font-weight:600}
+.sub{font-style:italic;font-size:1.3rem;min-height:1.8em;margin:0 0 22px;opacity:.9}
+.btns{display:flex;gap:18px;justify-content:center;align-items:center;min-height:90px}
+button{font:inherit;font-size:1.4rem;font-weight:600;border:0;border-radius:999px;padding:14px 34px;cursor:pointer}
+button:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
+#yes,#no.yes2{background:var(--rose);color:#3a1530;box-shadow:0 8px 24px rgba(229,143,168,.45)}
+#yes{transition:transform .2s}
+#no{background:#4a3a66;color:var(--paper);transition:left .25s,top .25s}
+#no.run{position:fixed;z-index:5}
+.meter{font-size:1.05rem;opacity:.7;margin-top:6px;font-style:italic}
+.done-wrap{display:none}
+.done-wrap.show{display:block;animation:pop .7s cubic-bezier(.2,1.6,.4,1) both}
+@keyframes pop{from{opacity:0;transform:scale(.5)}to{opacity:1;transform:none}}
+.big{font-size:6rem;line-height:1}
+.done-wrap h1{font-family:'Caveat',cursive;font-size:3.2rem;color:var(--gold)}
+.letter{background:var(--paper);color:#3a2a3d;border-radius:10px;padding:24px 22px;text-align:left;font-size:1.3rem;line-height:1.55;box-shadow:0 0 60px rgba(242,207,139,.3);margin:18px 0;min-height:150px}
+.letter b{font-family:'Caveat',cursive;font-size:1.8rem;color:var(--deep);font-weight:600}
+h2{font-family:'Caveat',cursive;font-size:2rem;color:var(--gold);margin:30px 0 4px}
+.note{font-style:italic;opacity:.8;margin:0 0 12px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.card{perspective:600px;height:110px;padding:0;background:none;border-radius:14px}
+.card i{position:absolute;inset:0;border-radius:14px;display:grid;place-items:center;padding:10px;font-style:normal;font-size:1.15rem;line-height:1.25;backface-visibility:hidden;transition:transform .6s}
+.card{position:relative}
+.card .f{background:var(--deep);color:var(--paper);font-size:2rem}
+.card .b{background:var(--paper);color:#3a2a3d;transform:rotateY(180deg)}
+.card.flip .f{transform:rotateY(180deg)}.card.flip .b{transform:rotateY(360deg)}
+.row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.row button{font-size:1.2rem;padding:12px 22px;background:var(--rose);color:#3a1530}
+.bar{height:20px;border-radius:99px;background:#ffffff22;overflow:hidden;margin:6px 0}
+.bar div{height:100%;width:0;background:linear-gradient(90deg,var(--rose),var(--gold));transition:width 2.5s ease-out}
+.fin{font-family:'Caveat',cursive;font-size:2rem;color:var(--gold);margin-top:34px}
+.h{position:fixed;bottom:-40px;z-index:1;pointer-events:none;animation:up linear forwards}
+@keyframes up{to{transform:translate(var(--dx),-115vh) rotate(var(--r));opacity:0}}
+.t{position:fixed;z-index:6;pointer-events:none;font-size:16px;animation:tr .9s ease-out forwards}
+@keyframes tr{to{transform:translateY(-30px) scale(.4);opacity:0}}
+.coupon{display:block;width:100%;text-align:left;background:var(--paper);color:#3a2a3d;border:2px dashed var(--deep);border-radius:12px;padding:12px 16px;margin:0 0 10px;font-size:1.2rem;line-height:1.3}
+.coupon b{font-family:'Caveat',cursive;font-size:1.5rem;color:var(--deep);display:block}
+.coupon.used{opacity:.6;border-style:solid}
+.game{position:relative;height:230px;border-radius:14px;background:#ffffff14;overflow:hidden;margin-top:8px}
+.gh{position:absolute;top:-40px;font-size:34px;background:none;padding:0;animation:drop linear forwards;line-height:1}
+@keyframes drop{to{top:240px}}
+.gmsg{position:absolute;inset:0;display:grid;place-items:center;font-size:1.3rem;padding:12px;pointer-events:none}
+.keys{display:flex;gap:6px;justify-content:center}
+.keys button{width:46px;height:78px;padding:0;border-radius:8px 8px 14px 14px;background:var(--paper);color:var(--deep);font-size:1.3rem}
+.keys button:active{background:var(--rose)}
+@media (prefers-reduced-motion:reduce){.pet{animation:none}.h,.t,.star{display:none}}
+</style>
+</head>
+<body>
+<main class="stage">
+  <section id="ask">
+    <div class="pet" id="pet" aria-hidden="true">🧸</div>
+    <p class="name">Naomi Kallarakal</p>
+    <h1>Will you be mine?</h1>
+    <p class="sub" id="sub">Choose carefully. 🥺</p>
+    <div class="btns">
+      <button id="yes">Yes 💖</button>
+      <button id="no" type="button">No</button>
+    </div>
+    <p class="meter" id="meter"></p>
+  </section>
+  <section class="done-wrap" id="done" aria-live="polite">
+    <div class="big" aria-hidden="true">🥰</div>
+    <h1>She said yes!</h1>
+    <div class="letter" id="letter"></div>
+
+    <h2>Why you said yes</h2>
+    <p class="note">Tap each one.</p>
+    <div class="cards" id="cards"></div>
+
+    <h2>Send me something</h2>
+    <div class="row">
+      <button data-e="🤗">Hug 🤗</button>
+      <button data-e="😘">Kiss 😘</button>
+      <button data-e="🍫">Chocolate 🍫</button>
+      <button data-e="🌹">Rose 🌹</button>
+    </div>
+    <p class="meter" id="sent">Sent so far: 0</p>
+
+    <h2>Love meter</h2>
+    <div class="bar"><div id="fill"></div></div>
+    <p class="meter" id="pct">0%</p>
+
+    <h2>Catch my heart</h2>
+    <p class="note">Tap 10 hearts before they fall.</p>
+    <div class="game" id="game"><div class="gmsg" id="gmsg"><button id="gstart">Start 💘</button></div></div>
+    <p class="meter" id="gscore"></p>
+
+    <h2>Coupons just for you</h2>
+    <p class="note">Tap to redeem.</p>
+    <button class="coupon"><b>One dinner, your choice</b>I pay, you pick the place.</button>
+    <button class="coupon"><b>One long hug</b>No time limit. Valid anytime.</button>
+    <button class="coupon"><b>One movie night</b>You pick the movie, I bring snacks.</button>
+
+    <h2>Play me a tune</h2>
+    <div class="keys" id="keys"></div>
+
+    <p class="fin">Now screenshot this and send it to me. 💌</p>
+  </section>
+</main>
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var yes=$('yes'),no=$('no'),sub=$('sub'),pet=$('pet'),meter=$('meter');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var em=['💖','💕','💗','🌸','✨','🧸','🥰','💘'];
+  /* stars */
+  for(var s=0;s<40;s++){var d=document.createElement('span');d.className='star';d.style.left=Math.random()*100+'vw';d.style.top=Math.random()*100+'vh';d.style.animationDelay=Math.random()*3+'s';document.body.appendChild(d)}
+  /* cursor trail */
+  var last=0;
+  addEventListener('pointermove',function(e){
+    if(reduce||Date.now()-last<90)return;last=Date.now();
+    var t=document.createElement('span');t.className='t';t.textContent='💗';t.style.left=e.clientX+'px';t.style.top=e.clientY+'px';
+    document.body.appendChild(t);setTimeout(function(){t.remove()},900);
+  });
+  /* No button */
+  var lines=['Nice try. 😏','The No button is shy.','It left. Try Yes? 🥺','Aww, you missed.','Are you sure? Look at the other button.','That one is broken. Sorry!','Pretty please? 🥹','Yes is right there, Naomi.'];
+  var moods=['🧸','🥺','😢','😭','😭','😭','🥹','🥹'];
+  var n=0,scale=1,tamed=false;
+  function dodge(e){
+    if(tamed)return;
+    e.preventDefault();
+    n++;
+    if(n>=9){
+      tamed=true;no.className='yes2';no.style.cssText='';no.textContent='Okay, Yes 💖';
+      sub.textContent='I gave up on the No button. 😌';pet.textContent='🥰';meter.textContent='';
+      no.addEventListener('click',say);return;
+    }
+    sub.textContent=lines[(n-1)%lines.length];
+    pet.textContent=moods[(n-1)%moods.length];
+    meter.textContent='Times you tried to say no: '+n;
+    scale=Math.min(scale+.16,2);
+    yes.style.transform='scale('+scale+')';
+    yes.style.margin='0 '+Math.round((scale-1)*28)+'px';
+    no.classList.add('run');
+    var w=no.offsetWidth,h=no.offsetHeight,m=16;
+    no.style.left=(m+Math.random()*(innerWidth-w-2*m))+'px';
+    no.style.top=(m+Math.random()*(innerHeight-h-2*m))+'px';
+  }
+  ['mouseenter','pointerdown','touchstart','click','focus'].forEach(function(ev){no.addEventListener(ev,dodge,{passive:false})});
+  /* hearts */
+  function hearts(c,list){
+    for(var i=0;i<c;i++){
+      var x=document.createElement('span');x.className='h';
+      x.textContent=list[Math.floor(Math.random()*list.length)];
+      x.style.left=Math.random()*100+'vw';x.style.fontSize=(18+Math.random()*30)+'px';
+      x.style.setProperty('--dx',(Math.random()*160-80)+'px');x.style.setProperty('--r',(Math.random()*60-30)+'deg');
+      x.style.animationDuration=(3+Math.random()*4)+'s';x.style.animationDelay=Math.random()*2+'s';
+      document.body.appendChild(x);setTimeout(function(el){el.remove()},9500,x);
+    }
+  }
+  /* chime */
+  function chime(){
+    try{
+      var A=new (window.AudioContext||window.webkitAudioContext)();
+      [523,659,784,1047,1319].forEach(function(f,i){
+        var o=A.createOscillator(),g=A.createGain(),t=A.currentTime+i*.14;
+        o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.18,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+.9);
+        o.connect(g);g.connect(A.destination);o.start(t);o.stop(t+1);
+      });
+    }catch(e){}
+  }
+  /* typewriter */
+  var msg='<b>Dear Naomi,</b><br>I could not be happier that you said yes. You make ordinary days feel lighter, and I am lucky to have you in my life. Thank you for being exactly who you are.<br><b>With love ♥</b>';
+  function type(){
+    var el=$('letter'),i=0,tmp=document.createElement('div');tmp.innerHTML=msg;
+    var plain=msg;
+    if(reduce){el.innerHTML=msg;return}
+    (function step(){
+      i+=2;
+      var cut=plain.slice(0,i);
+      var lt=cut.lastIndexOf('<'),gt=cut.lastIndexOf('>');
+      if(lt>gt){i=plain.indexOf('>',lt)+1;cut=plain.slice(0,i)}
+      el.innerHTML=cut;
+      if(i<plain.length)setTimeout(step,28);
+    })();
+  }
+  /* reasons */
+  var why=['Your smile','The way you laugh','You make me calmer','You are my favourite person to talk to','You are kind to everyone','Everything else 💖'];
+  why.forEach(function(r){
+    var c=document.createElement('button');c.className='card';c.setAttribute('aria-label','Reveal a reason');
+    c.innerHTML='<i class="f">💌</i><i class="b">'+r+'</i>';
+    c.onclick=function(){c.classList.toggle('flip');hearts(6,['💖'])};
+    $('cards').appendChild(c);
+  });
+  /* send things */
+  var sent=0;
+  document.querySelectorAll('.row button').forEach(function(b){
+    b.onclick=function(){sent++;$('sent').textContent='Sent so far: '+sent;hearts(14,[b.dataset.e,'💖'])};
+  });
+  /* teddy secret */
+  var taps=0;
+  pet.addEventListener('click',function(){taps++;if(taps===5){sub.textContent='Secret found: you are my favourite person. 🤫';hearts(25,em)}});
+  /* catch the heart game */
+  var AC;
+  function note(f){
+    try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();
+    var o=AC.createOscillator(),g=AC.createGain(),t=AC.currentTime;
+    o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(.2,t);g.gain.exponentialRampToValueAtTime(.001,t+.7);
+    o.connect(g);g.connect(AC.destination);o.start(t);o.stop(t+.8);}catch(e){}
+  }
+  $('gstart').onclick=function(){
+    var game=$('game'),score=0,left=16;
+    $('gmsg').style.display='none';$('gscore').textContent='Caught: 0 / 10';
+    var iv=setInterval(function(){
+      if(left--<=0){clearInterval(iv);setTimeout(function(){if(score<10){$('gmsg').style.display='grid';$('gmsg').innerHTML='<button id="gstart2">Try again 💘</button>';$('gstart2').onclick=$('gstart').onclick}},3500);return}
+      var h=document.createElement('button');h.className='gh';h.textContent='💗';h.setAttribute('aria-label','Catch heart');
+      h.style.left=(5+Math.random()*80)+'%';h.style.animationDuration=(2.2+Math.random()*1.3)+'s';
+      h.onclick=function(){h.remove();score++;note(500+score*60);$('gscore').textContent='Caught: '+score+' / 10';
+        if(score===10){clearInterval(iv);$('gscore').textContent='You caught my heart for real. 💘';hearts(40,em)}};
+      game.appendChild(h);setTimeout(function(){h.remove()},3600);
+    },700);
+  };
+  /* coupons */
+  document.querySelectorAll('.coupon').forEach(function(c){
+    c.onclick=function(){if(c.classList.contains('used'))return;c.classList.add('used');c.querySelector('b').textContent='Redeemed ✔ (screenshot me!)';hearts(12,['🎟️','💖'])};
+  });
+  /* keys */
+  [523,587,659,784,880,988,1047].forEach(function(f,i){
+    var k=document.createElement('button');k.textContent='♪';k.setAttribute('aria-label','Note '+(i+1));
+    k.onclick=function(){note(f)};$('keys').appendChild(k);
+  });
+  /* yes */
+  function say(){
+    $('ask').style.display='none';no.style.display='none';
+    document.body.classList.add('done');
+    $('done').classList.add('show');scrollTo(0,0);
+    chime();hearts(70,em);type();
+    setInterval(function(){hearts(8,em)},2500);
+    setTimeout(function(){$('fill').style.width='100%';var p=0,iv=setInterval(function(){p+=2;$('pct').textContent=p<100?p+'%':'100%  (and still going)';if(p>=100)clearInterval(iv)},50)},800);
+  }
+  yes.addEventListener('click',say);
+})();
+</script>
+</body>
+</html>
